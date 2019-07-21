@@ -1,6 +1,6 @@
 /** Elba Chimilio
  * COP3530-Section 7303
- * Project 3: Implementation of Dijkstra's algorithm using adjacency lists
+ * Project 3: Implementation of Dijkstra's algorithm using adjacency list and min-heap
 */
 
 #include <iostream>
@@ -151,13 +151,13 @@ void Graphs_P3::printDijkstra(int source){
     priority_queue<paifOfVer, vector<paifOfVer>, greater<paifOfVer>> minHeap; //Creates a min-heap
     vector<int> weights(MAX_VERTICES, a); //Contains weights in vector
     string thePath = to_string(source);
-    vector<string> paths(MAX_VERTICES, thePath);//Vector containing the paths from one vertex to another
+    vector<string> paths(MAX_VERTICES, thePath); //Vector containing the paths from one vertex to another
     minHeap.push(make_pair(0, source));
     weights[source] = 0;
     
     while(!minHeap.empty()){
-        int D = minHeap.top().second;//Sets the shortest distance to source vertex
-        minHeap.pop(); //pops from minHeap
+        int D = minHeap.top().second; //Sets the shortest distance to source vertex
+        minHeap.pop(); //Pops from minHeap
         adjList *top = &vertexArray[D];
         adjList *adjacentTop = top->nextNode; 
 
